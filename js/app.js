@@ -40,7 +40,6 @@ const addNewContact = (event) => {
 
             inputFormName.value = '';
             inputFormAddress.value = '';
-           
         } else {
             alert("제출을 취소하셨습니다.");
         }
@@ -68,7 +67,7 @@ contactList.addEventListener('click', (event) => {
         const li = div.parentNode;
         const ul = li.parentNode;
         if (button.textContent === "Remove") {
-            let confirmAnswer = window.confirm("정보를 삭제하겠습니까?");
+            let confirmAnswer = window.confirm("정보를 삭제하시겠습니까?");
             if (confirmAnswer === true) {
             ul.removeChild(li);
             }

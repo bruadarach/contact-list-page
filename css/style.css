@@ -24,7 +24,6 @@ input[type="text"]:focus {
   outline: none;
   border-color: var(--main-background-color);
 }
-
   
 body {
     /* display: flex; */
@@ -183,14 +182,16 @@ ul, li {
 }
 
 #contact-list li label {
+    display: flex;
     font-size: 14px;
-    /* display: block; */
     margin: 0.2rem 0;
     color: var(--input-label-color);
 }
   
 #contact-list li label input[type="checkbox"] {
     margin-left: 0.5rem;
+    cursor: pointer;
+    transition: opacity 0.2s linear;
 }
 
 #contact-list li .contact-list-buttons {
@@ -200,14 +201,14 @@ ul, li {
 #contact-list li.confirmed {
     transition: 0.4s;
     border-color: var(--main-background-color);;
-  }
+}
   
 #contact-list li.confirmed label,
 #contact-list li.confirmed a,
 #contact-list li.confirmed span {
     transition: 0.4s;
     color: var(--main-background-color);
-  }
+}
 
 #contact-list button {
     padding: 0 0.5rem;
