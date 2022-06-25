@@ -3,7 +3,7 @@ const make = (target) => document.createElement(target);
 const inputFormName = get('.form-name');
 const inputFormAddress = get('.form-address');
 const formSubmitButton = get('.form-submit-button');
-const contactList = get('#contactList');
+const contactList = get('#contact-list');
 
 const addNewContact = (event) => {
     event.preventDefault();
@@ -35,7 +35,7 @@ const addNewContact = (event) => {
             let li = make('li');
             li.append(span, a, label, div);
             console.log(li);
-            let ul = get('#contactList');
+            let ul = get('#contact-list');
             ul.prepend(li);
 
             inputFormName.value = '';
@@ -97,7 +97,7 @@ contactList.addEventListener('click', (event) => {
             span.textContent = input.value;
             li.insertBefore(span, input);
             li.removeChild(input);
-       
+            
             const a = li.children[1];
             const newA = make('a');
             newA.className = "list-github-address";
