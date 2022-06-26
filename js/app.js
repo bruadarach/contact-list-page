@@ -4,6 +4,7 @@ const inputFormName = get('.form-name');
 const inputFormAddress = get('.form-address');
 const formSubmitButton = get('.form-submit-button');
 const contactList = get('#contact-list');
+const main = get('#main');
 
 const addNewContact = (event) => {
     event.preventDefault();
@@ -22,7 +23,7 @@ const addNewContact = (event) => {
             label.textContent = "Confirmed";
             const input = make('input');
             input.setAttribute('type', "checkbox");
-            label.append(input);
+            label.appendChild(input);
             let div = make('div');
             div.className = "contact-list-buttons";
             const button1 = make('button');
@@ -31,9 +32,9 @@ const addNewContact = (event) => {
             const button2 = make('button');
             button2.className = "remove-button";
             button2.textContent = "Remove";
-            div.append(button1, button2);
+            div.appendChild(button1, button2);
             let li = make('li');
-            li.append(span, a, label, div);
+            li.appendChild(span, a, label, div);
             console.log(li);
             let ul = get('#contact-list');
             ul.prepend(li);
@@ -41,7 +42,7 @@ const addNewContact = (event) => {
             inputFormName.value = '';
             inputFormAddress.value = '';
         } else {
-            alert("제출을 취소하셨습니다.");
+            alert("제출을 취소합니다.");
         }
     } else {
         window.alert("필수사항을 모두 입력해주세요.");
@@ -50,7 +51,7 @@ const addNewContact = (event) => {
 
 contactList.addEventListener('change', (event) => {
     const checkbox = event.target;
-    const checked = checkbox.checked;
+    let checked = checkbox.checked;
     li = checkbox.parentNode.parentNode; // label -> li
     if (checked) {
         li.className = 'confirmed';
@@ -106,6 +107,37 @@ contactList.addEventListener('click', (event) => {
             li.insertBefore(newA, a);
             li.removeChild(a);
             button.textContent = 'Edit';
+        }
+    }
+})
+
+const div = make('div');
+div.className = 'response-check';
+const confirmLabel = make('label');
+confirmLabel.textContent = "Hide those who haven't confirmed";
+const confirmCheckbox = make('input');
+confirmCheckbox.type = 'checkbox';
+confirmLabel.appendChild(confirmCheckbox);
+div.append(confirmLabel);
+main.insertBefore(div, contactList);
+
+confirmCheckbox.addEventListener('change', (event) => {
+    const isChecked = event.target.checked;
+    const lis = contactList.children;
+
+    if (isChecked) {
+        for (let i = 0; i < lis.length; i++) {
+            let li = lis[i];
+            if (li.className === 'confirmed') {
+                li.style.display = '';
+            } else {
+                li.style.display = "none";
+            }
+        }
+    } else {
+        for (let i = 0; i < lis.length; i++) {
+            let li = lis[i];
+            li.style.display = '';
         }
     }
 })
