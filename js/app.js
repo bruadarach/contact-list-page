@@ -4,7 +4,6 @@ const inputFormName = get('.form-name');
 const inputFormAddress = get('.form-address');
 const formSubmitButton = get('.form-submit-button');
 const contactList = get('#contact-list');
-const main = get('#main');
 
 const addNewContact = (event) => {
     event.preventDefault();
@@ -23,7 +22,7 @@ const addNewContact = (event) => {
             label.textContent = "Confirmed";
             const input = make('input');
             input.setAttribute('type', "checkbox");
-            label.appendChild(input);
+            label.append(input);
             let div = make('div');
             div.className = "contact-list-buttons";
             const button1 = make('button');
@@ -32,17 +31,16 @@ const addNewContact = (event) => {
             const button2 = make('button');
             button2.className = "remove-button";
             button2.textContent = "Remove";
-            div.appendChild(button1, button2);
+            div.append(button1, button2);
             let li = make('li');
-            li.appendChild(span, a, label, div);
-            console.log(li);
+            li.append(span, a, label, div);
             let ul = get('#contact-list');
             ul.prepend(li);
 
             inputFormName.value = '';
             inputFormAddress.value = '';
         } else {
-            alert("제출을 취소합니다.");
+            alert("제출을 취소하셨습니다.");
         }
     } else {
         window.alert("필수사항을 모두 입력해주세요.");
