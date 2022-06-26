@@ -12,7 +12,7 @@
         <div id="wrapper">
             <div class="container">
                 <header id="header">
-                    <h1>Github Contact List</h1>
+                    <h1><i class="fab fa-github"></i>Github Contact List</h1>
                 </header>
                 <main id="main">
                     <form id="contact-form">
@@ -21,13 +21,13 @@
                         <button class="form-submit-button" type="submit" name="submit" value="submit">Submit</button>
                     </form>
                     <div id="contact-search">
-                        <form class="input-search-name" action="action_page.php">
+                        <form class="input-search-name">
                             <input class="search-name" type="text" placeholder="Search name..." name="search">
-                            <button type="button"><i class="fa fa-search"></i></button>
+                            <button class="search-button" type="button"><i class="fa fa-search"></i></button>
                         </form>
-                        <!-- <div class="response-check">
-                            <label>Hide those who haven't confirmed<input type="checkbox"></label>
-                        </div> -->
+                        <div class="response-check">
+                            <label>Only show who confirmed the request <input class="response-checkbox" type="checkbox"></label>
+                        </div>
                     </div>
                     <ul id="contact-list">
                         <li>

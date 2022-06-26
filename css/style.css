@@ -65,6 +65,11 @@ ul, li {
     padding: 0.5rem 2.5rem;
 }
 
+#header i {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+
 #header h1 {
     font-size: 24px;
     padding: 1rem 0;
@@ -109,14 +114,16 @@ ul, li {
 #contact-search {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     flex: 1;
     margin-bottom: 1rem;
+    width: 40%;
 }
 
 #contact-search .input-search-name {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.8rem;
+    margin: 0.8rem 0;
     border: none;
 }
 
@@ -148,7 +155,7 @@ ul, li {
 .response-check {
     display: flex;
     flex: 1;
-    margin-left: 0.3rem;
+    margin: 0.7rem 0 0 0.3rem;
 }
 
 .response-check label {

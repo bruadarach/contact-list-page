@@ -4,6 +4,17 @@ const inputFormName = get('.form-name');
 const inputFormAddress = get('.form-address');
 const formSubmitButton = get('.form-submit-button');
 const contactList = get('#contact-list');
+let inputSearchName = get('.search-name');
+const responseCheckbox = get('.response-checkbox');
+const searchButton = get('.search-button');
+
+inputFormName.addEventListener("focus", () => {
+    inputSearchName.value = '';
+})
+
+inputFormAddress.addEventListener("focus", () => {
+    inputSearchName.value = '';
+})
 
 const addNewContact = (event) => {
     event.preventDefault();
@@ -39,6 +50,13 @@ const addNewContact = (event) => {
 
             inputFormName.value = '';
             inputFormAddress.value = '';
+
+            const lis = contactList.children;
+            for (let i = 0; i < lis.length; i++) {
+                let li = lis[i];
+                li.style.display = '';
+            }
+            
         } else {
             alert("제출을 취소하셨습니다.");
         }
@@ -109,17 +127,8 @@ contactList.addEventListener('click', (event) => {
     }
 })
 
-const div = make('div');
-div.className = 'response-check';
-const confirmLabel = make('label');
-confirmLabel.textContent = "Hide those who haven't confirmed";
-const confirmCheckbox = make('input');
-confirmCheckbox.type = 'checkbox';
-confirmLabel.appendChild(confirmCheckbox);
-div.append(confirmLabel);
-main.insertBefore(div, contactList);
-
-confirmCheckbox.addEventListener('change', (event) => {
+responseCheckbox.addEventListener('change', (event) => {
+    inputSearchName.value = '';
     const isChecked = event.target.checked;
     const lis = contactList.children;
 
@@ -140,4 +149,18 @@ confirmCheckbox.addEventListener('change', (event) => {
     }
 })
 
-formSubmitButton.addEventListener("click", addNewContact)
+inputSearchName.addEventListener("keyup", (event)=>{
+    responseCheckbox.checked = false;
+    const lis = contactList.children;
+    for (let i  = 0; i < lis.length; i++) {
+        let li = lis[i];
+        let username = li.children[0].textContent;
+        if (username.indexOf(event.target.value) !== -1) {
+            li.style.display = '';
+        } else {
+            li.style.display = 'none';
+        }
+    }
+})
+
+formSubmitButton.addEventListener("click", addNewContact);
